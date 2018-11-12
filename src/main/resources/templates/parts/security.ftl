@@ -14,9 +14,5 @@ known = Session.SPRING_SECURITY_CONTEXT??
 
     isAdmin = false
     >
-    <#if name = "unknown">
-        <#assign
-        undefineduser = true
-        >
-    </#if>
+
 </#if>
