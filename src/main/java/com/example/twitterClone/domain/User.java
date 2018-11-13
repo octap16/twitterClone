@@ -4,8 +4,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.Set;
+
+
 
 @Entity
 @Table(name = "usr")
@@ -14,11 +18,19 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Cannot be empty")
     private String username;
+    @NotBlank(message = "Cannot be empty")
     private String password;
+    @Transient
+    @NotBlank(message = "Cannot be empty")
+    private String password2;
     private boolean active;
+    @Email(message = "Email is not correct")
+    @NotBlank(message = "Cannot be empty")
     private String email;
     private String activationCode;
+
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -113,5 +125,13 @@ public class User implements UserDetails {
     @Override
     public String toString() {
         return  username ;
+    }
+
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
     }
 }
