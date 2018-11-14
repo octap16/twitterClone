@@ -22,9 +22,7 @@ public class User implements UserDetails {
     private String username;
     @NotBlank(message = "Cannot be empty")
     private String password;
-    @Transient
-    @NotBlank(message = "Cannot be empty")
-    private String password2;
+
     private boolean active;
     @Email(message = "Email is not correct")
     @NotBlank(message = "Cannot be empty")
@@ -127,11 +125,4 @@ public class User implements UserDetails {
         return  username ;
     }
 
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
 }

@@ -53,7 +53,21 @@
                 </#if>
             </div>
         </div>
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LfoynoUAAAAANP1TYXH18ET_au60dt_cbyYH3XR', {action: 'action_name'})
+                .then(function(token) {
+// Verify the token on the server.
+                });
+    });
+</script>
+
+
+
     </#if>
+
+
+
     <input type="hidden" name="_csrf" value="${_csrf.token}" />
     <#if !isRegisterForm><a href="/registration">Add new user</a></#if>
     <button class="btn btn-primary" type="submit"><#if isRegisterForm>Create<#else>Sign In</#if></button>
