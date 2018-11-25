@@ -125,11 +125,5 @@ public class MessageController {
 
     }
 
-    //----------Filter------------//
-    @PostMapping ("filter")
-    public String filter(@RequestParam String filter,  Map<String, Object> model) {
-        List<Message> messages = repository.findByTag(filter);
-        model.put("messages",messages);
-        return "main";
-    }
+
 }
